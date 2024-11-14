@@ -1,4 +1,4 @@
-namespace PGApi
+namespace PGApi.PGApi
 {
     public class WeatherForecast
     {
