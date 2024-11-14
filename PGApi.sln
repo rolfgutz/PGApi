@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGApi.Infrastructure.SqlSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGApi.Domain", "PGApi.Domain\PGApi.Domain.csproj", "{0A66EA50-4DB4-487B-9FE9-072CEF755B72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGApi.Tests", "PGApi.Tests\PGApi.Tests.csproj", "{97E99E99-F1DE-422F-8BFE-8EB6C53DCF1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0A66EA50-4DB4-487B-9FE9-072CEF755B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A66EA50-4DB4-487B-9FE9-072CEF755B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A66EA50-4DB4-487B-9FE9-072CEF755B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E99E99-F1DE-422F-8BFE-8EB6C53DCF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E99E99-F1DE-422F-8BFE-8EB6C53DCF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E99E99-F1DE-422F-8BFE-8EB6C53DCF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E99E99-F1DE-422F-8BFE-8EB6C53DCF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
