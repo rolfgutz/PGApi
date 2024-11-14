@@ -1,21 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PGApi.PGApi.Domain.Entities;
-using PGApi.PGApi.Infrastructure.Data;
+using PGApi.PGApi.Infrastructure.Repositories;
 
-namespace PGApi.PGApi.Infrastructure.Repositories
+namespace PGApi.Infrastructure.SqlServer.Repositories
 {
-    public class OrderRepository : IOrderRepository
+    public class SqlServerOrderRepository : IOrderRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SqlServerDbContext _context;
 
-        public OrderRepository(ApplicationDbContext context)
+        public SqlServerOrderRepository(SqlServerDbContext context)
         {
             _context = context;
         }
 
         public async Task AddAsync(Order order)
         {
-            await _context.Orders.AddAsync(order); // Adiciona o pedido
+            await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
         }
 
@@ -23,6 +23,5 @@ namespace PGApi.PGApi.Infrastructure.Repositories
         {
             return await _context.Orders.ToListAsync();
         }
-       
     }
 }

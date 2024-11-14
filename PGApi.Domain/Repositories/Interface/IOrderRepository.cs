@@ -1,4 +1,5 @@
-﻿using PGApi.PGApi.Domain.Entities;
+﻿
+using PGApi.PGApi.Domain.Entities;
 
 namespace PGApi.PGApi.Infrastructure.Repositories
 {

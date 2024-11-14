@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
@@ -19,8 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PGApi.Domain\Entities\ValueObjects\" />
     <Folder Include="PGApi.Shared\Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PGApi.Domain\PGApi.Domain.csproj" />
+    <ProjectReference Include="..\PGApi.Infrastructure.SqlServer\PGApi.Infrastructure.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>
