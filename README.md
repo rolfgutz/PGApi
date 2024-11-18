@@ -42,32 +42,29 @@ A estrutura do projeto é organizada da seguinte forma, seguindo os princípios 
   - **Messaging** inclui implementações para comunicação assíncrona, como filas e eventos.
   - **Migrations** contém as migrações do banco de dados, facilitando a evolução do esquema ao longo do tempo.
 
-- **PGApi.Shared (Opcional)**:
-  - **Utils** contém utilitários e funções auxiliares que podem ser utilizadas em diferentes partes do projeto.
-  - **Extensions** inclui métodos de extensão que aumentam a funcionalidade de classes existentes, promovendo um código mais limpo e reutilizável.
 
-## Fluxo do Sistema
+## Resumo de Como Funciona o Fluxo (PADRAO CQRS (Command Query Responsibility Segregation))
 
 O fluxo do sistema ocorre da seguinte forma:
 
-1. **Requisição do Cliente**:
+1. **Controller (OrdersController)**:
+   - Recebe uma requisição HTTP (GET) para listar todos os pedidos.
    - O cliente faz uma requisição HTTP para a API (por exemplo, para criar um pedido ou obter uma lista de pedidos).
    
-2. **Controller**:
-   - A requisição chega até o **Controller** correspondente na camada **Api**. O controller é responsável por receber a requisição e validar os dados recebidos.
-   - Exemplo: O método `CreateOrder` recebe os dados do pedido, que são mapeados para um comando.
+2. **MediatR**:
+   - O controlador envia a GetAllOrdersQuery para o MediatR, que vai localizar o handler apropriado.
 
 3. **Mediator**:
    - Após a validação, o controller usa o **MediatR** para enviar o comando (no caso, um **CreateOrderCommand**) ou a consulta (no caso de uma **GetAllOrdersQuery**) para o **Handler** correspondente.
    - O **MediatR** é responsável por fazer a comunicação entre o controller e o handler, delegando a execução da lógica de negócio.
 
 4. **Handler**:
-   - O **Handler** processa o comando ou consulta. Ele contém a lógica da aplicação, como validações, cálculos e manipulação de dados.
-   - Exemplo: O **CreateOrderHandler** cria um pedido com os dados do DTO, valida se a quantidade é válida e persiste a informação no banco de dados.
+   - O **Handler** (GetAllOrdersHandler) O handler lida com a consulta, acessando o repositório para recuperar os pedidos do banco de dados e retornando os dados no formato apropriado (DTO).
 
 5. **Repositório**:
-   - O handler comunica-se com a camada de **Infraestrutura**, que contém a implementação do **Repositório**. O repositório é responsável por interagir com o banco de dados (via **Entity Framework** ou outro ORM) e realizar as operações de CRUD.
-   - Exemplo: O repositório **SqlServerOrderRepository** é chamado para adicionar um novo pedido ao banco de dados.
+   - (IOrderRepository)O repositório acessa o banco de dados e retorna a lista de pedidos.
+	Resultado: O MediatR retorna o resultado da operação (sucesso ou falha) para o controlador, que então retorna a resposta HTTP adequada.
+	e adicionar como fuinciona o padrao  CQRS (Command Query Responsibility Segregation)
 
 6. **Resposta**:
    - Após a execução do comando ou consulta, o **Handler** retorna um **Result**. O **Result** pode ser um sucesso ou uma falha, contendo os dados ou mensagens de erro.
