@@ -1,11 +1,8 @@
-
-
 using Microsoft.EntityFrameworkCore;
 using PGApi.Infrastructure.SqlServer.Repositories;
 using PGApi.Infrastructure.SqlServer;
 using PGApi.Domain.Repositories.Interface;
-using PGApi.Application.Handlers;
-using MediatR;
+using PGApi.Application.Commands.CreateOrder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +15,8 @@ builder.Services.AddDbContext<SqlServerDbContext>(options =>
 
 //Adicionar o repositório (IOrderRepository -> SqlServerOrderRepository)
 builder.Services.AddScoped<IOrderRepository, SqlServerOrderRepository>();
-builder.Services.AddMediatR(typeof(CreateOrderHandler).Assembly);
+//builder.Services.AddMediatR(typeof(CreateOrderHandler).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateOrderHandler).Assembly));
 
 // Add services to the container.
 builder.Services.AddControllers();

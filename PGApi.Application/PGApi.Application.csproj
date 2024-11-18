@@ -14,4 +14,9 @@
     <ProjectReference Include="..\PGApi.Domain\PGApi.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\DeleteOrder\" />
+    <Folder Include="Commands\UpdateOrder\" />
+  </ItemGroup>
+
 </Project>

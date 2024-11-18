@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using PGApi.Application.Commands;
 using PGApi.Application.Utils;
 using PGApi.Domain.Repositories.Interface;
 using PGApi.PGApi.Domain.Entities;
 
-namespace PGApi.Application.Handlers
+namespace PGApi.Application.Commands.CreateOrder
 {
     public class CreateOrderHandler : IRequestHandler<CreateOrderCommand, Result>
     {
@@ -29,7 +28,7 @@ namespace PGApi.Application.Handlers
                 // Adicionar o pedido no repositório (persistir no banco de dados)
                 await _orderRepository.AddAsync(order);
 
-                // Retorna sucesso com o Id do pedido criado
+                // Retorna sucesso, pois o pedido foi criado
                 return Result.Success();
             }
             catch (Exception ex)

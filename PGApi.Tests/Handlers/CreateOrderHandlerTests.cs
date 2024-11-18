@@ -1,7 +1,6 @@
 ﻿using Moq;
-using PGApi.Application.Commands;
+using PGApi.Application.Commands.CreateOrder;
 using PGApi.Application.DTOs;
-using PGApi.Application.Handlers;
 using PGApi.Domain.Repositories.Interface;
 using PGApi.PGApi.Domain.Entities;
 using Xunit;

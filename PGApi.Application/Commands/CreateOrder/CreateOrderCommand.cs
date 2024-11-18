@@ -2,7 +2,7 @@
 using PGApi.Application.DTOs;
 using PGApi.Application.Utils;
 
-namespace PGApi.Application.Commands
+namespace PGApi.Application.Commands.CreateOrder
 {
     public class CreateOrderCommand : IRequest<Result>
     {
