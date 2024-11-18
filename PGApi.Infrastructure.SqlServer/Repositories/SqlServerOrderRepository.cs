@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PGApi.Domain.Repositories.Interface;
 using PGApi.PGApi.Domain.Entities;
-using PGApi.PGApi.Infrastructure.Repositories;
 
 namespace PGApi.Infrastructure.SqlServer.Repositories
 {

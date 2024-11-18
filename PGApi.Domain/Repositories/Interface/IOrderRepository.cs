@@ -1,7 +1,7 @@
 ﻿
 using PGApi.PGApi.Domain.Entities;
 
-namespace PGApi.PGApi.Infrastructure.Repositories
+namespace PGApi.Domain.Repositories.Interface
 {
     public interface IOrderRepository
     {

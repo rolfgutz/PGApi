@@ -1,9 +1,8 @@
 ﻿using MediatR;
-using PGApi.PGApi.Application.DTOs;
-using PGApi.PGApi.Shared;
+using PGApi.Application.DTOs;
+using PGApi.Application.Utils;
 
-namespace PGApi.PGApi.Application.Commands
-
+namespace PGApi.Application.Commands
 {
     public class CreateOrderCommand : IRequest<Result>
     {

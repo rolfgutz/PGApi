@@ -19,10 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PGApi.Shared\Utils\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\PGApi.Application\PGApi.Application.csproj" />
     <ProjectReference Include="..\PGApi.Domain\PGApi.Domain.csproj" />
     <ProjectReference Include="..\PGApi.Infrastructure.SqlServer\PGApi.Infrastructure.SqlServer.csproj" />
   </ItemGroup>

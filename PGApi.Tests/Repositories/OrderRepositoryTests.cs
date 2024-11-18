@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using PGApi.Infrastructure.SqlServer;
 using PGApi.Infrastructure.SqlServer.Repositories;
 using PGApi.PGApi.Domain.Entities;
-using PGApi.PGApi.Infrastructure.Repositories;
 using Xunit;
 
 namespace PGApi.Tests.Repositories
