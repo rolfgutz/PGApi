@@ -1,4 +1,3 @@
-
 # PGApi
 
 ## Resumo
@@ -47,6 +46,36 @@ A estrutura do projeto é organizada da seguinte forma, seguindo os princípios 
   - **Utils** contém utilitários e funções auxiliares que podem ser utilizadas em diferentes partes do projeto.
   - **Extensions** inclui métodos de extensão que aumentam a funcionalidade de classes existentes, promovendo um código mais limpo e reutilizável.
 
+## Fluxo do Sistema
+
+O fluxo do sistema ocorre da seguinte forma:
+
+1. **Requisição do Cliente**:
+   - O cliente faz uma requisição HTTP para a API (por exemplo, para criar um pedido ou obter uma lista de pedidos).
+   
+2. **Controller**:
+   - A requisição chega até o **Controller** correspondente na camada **Api**. O controller é responsável por receber a requisição e validar os dados recebidos.
+   - Exemplo: O método `CreateOrder` recebe os dados do pedido, que são mapeados para um comando.
+
+3. **Mediator**:
+   - Após a validação, o controller usa o **MediatR** para enviar o comando (no caso, um **CreateOrderCommand**) ou a consulta (no caso de uma **GetAllOrdersQuery**) para o **Handler** correspondente.
+   - O **MediatR** é responsável por fazer a comunicação entre o controller e o handler, delegando a execução da lógica de negócio.
+
+4. **Handler**:
+   - O **Handler** processa o comando ou consulta. Ele contém a lógica da aplicação, como validações, cálculos e manipulação de dados.
+   - Exemplo: O **CreateOrderHandler** cria um pedido com os dados do DTO, valida se a quantidade é válida e persiste a informação no banco de dados.
+
+5. **Repositório**:
+   - O handler comunica-se com a camada de **Infraestrutura**, que contém a implementação do **Repositório**. O repositório é responsável por interagir com o banco de dados (via **Entity Framework** ou outro ORM) e realizar as operações de CRUD.
+   - Exemplo: O repositório **SqlServerOrderRepository** é chamado para adicionar um novo pedido ao banco de dados.
+
+6. **Resposta**:
+   - Após a execução do comando ou consulta, o **Handler** retorna um **Result**. O **Result** pode ser um sucesso ou uma falha, contendo os dados ou mensagens de erro.
+   - O controller recebe essa resposta e, dependendo do resultado, retorna um código HTTP correspondente (200 OK, 400 Bad Request, etc.).
+
+7. **Cliente Recebe a Resposta**:
+   - O cliente recebe a resposta da API, com os dados solicitados ou o status da operação (sucesso ou erro).
+
 ## Testes
 
 Os testes para a aplicação são desenvolvidos para garantir que a lógica do sistema funcione conforme o esperado. São utilizados testes unitários e de integração para verificar a funcionalidade de cada componente da API.
@@ -59,6 +88,3 @@ Os testes para a aplicação são desenvolvidos para garantir que a lógica do s
 
    ```bash
    dotnet test
-   ```
-
-Isso executará todos os testes definidos no projeto de teste.
