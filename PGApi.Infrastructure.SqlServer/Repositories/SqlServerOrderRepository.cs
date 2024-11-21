@@ -34,5 +34,12 @@ namespace PGApi.Infrastructure.SqlServer.Repositories
             _context.Orders.Update(order); 
             await _context.SaveChangesAsync(); 
         }
+
+        public async Task DeleteAsync(Order order)
+        {
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

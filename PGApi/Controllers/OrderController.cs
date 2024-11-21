@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PGApi.Application.Commands;
 using PGApi.Application.Commands.CreateOrder;
+using PGApi.Application.Commands.DeleteOrder;
 using PGApi.Application.Commands.UpdateOrder;
 using PGApi.Application.DTOs;
 using PGApi.Application.Queries;
@@ -53,22 +54,34 @@ namespace PGApi.Controllers
         /// <summary>
         /// Atualiza um pedido existente.
         /// </summary>
-        /// <param name="orderId">ID do pedido a ser atualizado.</param>
+        /// <param name="Id">ID do pedido a ser atualizado.</param>
         /// <param name="orderDto">Dados para atualização do pedido.</param>
         /// <returns>Resultado da operação.</returns>
-        [HttpPut("{orderId}")]
-        public async Task<IActionResult> UpdateOrder(int orderId, [FromBody] UpdateOrderDto orderDto)
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> UpdateOrder(int Id, [FromBody] UpdateOrderDto orderDto)
         {
             if (orderDto == null)
                 return BadRequest("Dados do pedido inválidos.");
 
 
             // Garante que o ID no comando corresponda ao ID da rota
-            var command = new UpdateOrderCommand(orderId, orderDto);
+            var command = new UpdateOrderCommand(Id, orderDto);
             var result = await _mediator.Send(command);
 
             if (result.IsSuccess)
                 return Ok("Pedido atualizado com sucesso!");
+
+            return BadRequest(result.ErrorMessage);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteOrder(int Id)
+        {
+            var command = new DeleteOrderCommand(Id);
+            var result = await _mediator.Send(command);
+
+            if (result.IsSuccess)
+                return Ok("Pedido deletado com sucesso.");
 
             return BadRequest(result.ErrorMessage);
         }

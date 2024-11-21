@@ -29,6 +29,7 @@ namespace PGApi.Application.Queries.GetAllOrders
                 // Mapeia as entidades de domínio para DTOs
                 var orderDtos = orders.ConvertAll(order => new OrderDto
                 {
+                    Id = order.Id,
                     ProductId = order.ProductId,
                     Quantity = order.Quantity,
                     // Mapear outras propriedades do Order conforme necessário
