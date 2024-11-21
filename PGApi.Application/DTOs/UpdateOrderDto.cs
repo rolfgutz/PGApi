@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PGApi.Application.DTOs
 {
-    public class OrderDto
+    public class UpdateOrderDto
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }

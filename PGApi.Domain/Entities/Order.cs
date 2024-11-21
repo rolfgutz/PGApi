@@ -13,5 +13,11 @@
             Quantity = quantity;
             CreatedAt = DateTime.UtcNow;
         }
+
+        // Método de atualização
+        public void Update(int quantity)
+        {
+            Quantity = quantity;
+        }
     }
 }

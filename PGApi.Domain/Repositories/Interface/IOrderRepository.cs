@@ -7,5 +7,7 @@ namespace PGApi.Domain.Repositories.Interface
     {
         Task AddAsync(Order order);
         Task<List<Order>> GetAllAsync();
+        Task<Order> GetByIdAsync(int id);
+        Task UpdateAsync(Order order); 
     }
 }
